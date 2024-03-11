@@ -21,8 +21,8 @@ class _CustomGreenBackgroundState extends State<CustomGreenBackground> {
             begin: Alignment.topLeft,
             end: Alignment.center,
             colors: [
-              AppColors().appGreen, // Light blue starting color
-              AppColors().appLightGreen, // Purple ending color
+              AppColors.appGreen, // Light blue starting color
+              AppColors.appLightGreen, // Purple ending color
             ],
           ),
         ),

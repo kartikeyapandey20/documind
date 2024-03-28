@@ -145,3 +145,88 @@ class _CustomButtonState extends State<CustomButton> {
     );
   }
 }
+
+class GradientContainer extends StatefulWidget {
+  final double borderWidth;
+  final Color borderColor;
+  Color? textColor;
+  final String text;
+  Function() ? onTap;
+  double? width;
+  double? height;
+  EdgeInsets? margin;
+  double? fontSize;
+  TextAlign? textAlign;
+  double? padding;
+  FontWeight? fontWeight;
+  bool? center=true;
+  double? borderCircularRadius = 12;
+  AlignmentGeometry? begin;
+  AlignmentGeometry? end;
+  Color? beginColor;
+  Color? endColor;
+  GradientContainer({Key? key,this.beginColor, this.endColor ,this.begin = Alignment.topCenter, this.end = Alignment.bottomCenter,this.padding=5,this.borderCircularRadius =12 ,this.center=true,this.textAlign=TextAlign.center,this.fontSize=22,this.onTap,this.textColor=AppColors.white,this.width,this.height,required this.borderColor,required this.text, required this.borderWidth,this.margin,this.fontWeight}) : super(key: key);
+
+
+  @override
+  _GradientContainer createState() => _GradientContainer();
+}
+
+class _GradientContainer extends State<GradientContainer> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      elevation: 30,
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: widget.onTap,
+        child: Container(
+          height: widget.height,
+          width: widget.width,
+          margin: widget.margin,
+
+          decoration: BoxDecoration(
+            // ignore: unnecessary_null_comparison
+              gradient: LinearGradient(
+                begin: widget.begin!,
+                end: widget.end!,
+                colors: [
+                  widget.beginColor!, // Light blue starting color
+                  widget.endColor!, // Purple ending color
+                ],
+              ),
+              borderRadius: BorderRadius.circular(widget.borderCircularRadius!),
+              border: Border.all(
+                // ignore: unnecessary_null_comparison
+                  color: widget.borderColor== null ?Color(0xFFFFFFFF) : widget.borderColor,
+                  width: widget.borderWidth
+              )
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(widget.padding!),
+            child: widget.center!?Center(
+              child: Text(widget.text,style: TextStyle(
+                fontSize: widget.fontSize,
+                color: widget.textColor,
+                fontWeight: widget.fontWeight,
+              ),textAlign: widget.textAlign,),
+            ):Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(widget.text,style: TextStyle(
+                    fontSize: widget.fontSize,
+                    color: widget.textColor,
+                    fontWeight: widget.fontWeight,
+                  ),textAlign: widget.textAlign,),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

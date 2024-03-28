@@ -1,3 +1,4 @@
+import 'package:documind/screens/dashboard_screen/dashboard_screen.dart';
 import 'package:documind/screens/sign_up/sign_up_screen.dart';
 import 'package:documind/utils/custom_background.dart';
 import 'package:documind/utils/custom_text_form_field.dart';
@@ -62,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
               borderCircularRadius: 22,
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const LoginScreen()));
+                    MaterialPageRoute(builder: (context) => const DashBoardScreen()));
               },
             ),
             SizedBox(

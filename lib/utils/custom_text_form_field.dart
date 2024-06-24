@@ -10,7 +10,8 @@ class CustomTextFormField extends StatefulWidget {
   final bool isValidate;
   double? width;
   double? textSize;
-  CustomTextFormField({Key? key,required this.labelText,this.textSize, this.inputType, this.textController, this.isValidate=false, this.width}) : super(key: key);
+  final bool? isObscure;
+  CustomTextFormField({Key? key,required this.labelText,this.textSize, this.inputType, this.textController, this.isValidate=false, this.width, this.isObscure = false}) : super(key: key);
 
   @override
   _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
@@ -37,13 +38,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           ),
           controller: widget.textController,
           keyboardType: widget.inputType,
+          obscureText: widget.isObscure!,
           decoration: InputDecoration(
               labelText: widget.labelText,
               filled: true,
               fillColor: AppColors.white,
               focusColor: AppColors.white,
               labelStyle: TextStyle(
-                  fontSize: widget.textSize
+                  fontSize: widget.textSize,
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(23,),

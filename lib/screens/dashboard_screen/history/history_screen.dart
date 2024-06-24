@@ -1,6 +1,9 @@
+import 'package:documind/screens/dashboard_screen/categories/chat/chart_screen_2.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constant/colors.dart';
+import '../../../data/api_call/document_api_call.dart';
+import '../../../data/model/extract_text_model.dart';
 import '../../../utils/custom_container.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -48,7 +51,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 beginColor: AppColors.purpleOne,
                 endColor: AppColors.purpleTwo,
                 borderWidth: 0,
-                text: 'Latest Tenders',
+                text: 'History Chat',
                 fontSize: 17,
               ),
               SizedBox(
@@ -58,25 +61,31 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 child: ListView.builder(
                     shrinkWrap: true,
                     padding: EdgeInsets.zero,
-                    itemCount: 5,
+                    itemCount: 1,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  AppColors.white, // Light blue starting color
-                                  AppColors.grey, // Purple ending color
-                                ],
+                        child: InkWell(
+                          onTap: ()async{
+                            // ExtractTextModel extractTextModel = await DocumentApiCall().textForLLM(snapshot.data![index].documentUrl!);
+                            // Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyHomePage(title: "Lets Solve", document: extractTextModel.extractedText!,)));
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    AppColors.white, // Light blue starting color
+                                    AppColors.grey, // Purple ending color
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(12)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Center(
+                                child: Text("Chat with PURCHASE OF CANE CARRIER CHAIN PITCH"),
                               ),
-                              borderRadius: BorderRadius.circular(12)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Center(
-                              child: Text("Chat $index"),
                             ),
                           ),
                         ),

@@ -1,7 +1,11 @@
 import 'package:documind/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 void main() {
+  Gemini.init(
+      apiKey: "your-api-key", enableDebugging: true);
+
   runApp(const MyApp());
 }
 

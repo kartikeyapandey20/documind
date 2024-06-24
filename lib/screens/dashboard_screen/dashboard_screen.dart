@@ -21,7 +21,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   List<Widget> _pages = [
     HomeScreen(),
     CategoriesScreen(),
-    HistoryScreen()
   ];
   @override
   Widget build(BuildContext context) {
@@ -35,6 +34,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               selectedIndex = index;
             });
         },
+        currentIndex: selectedIndex,
+        selectedItemColor: Colors.purple,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -44,10 +45,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             icon: Icon(Icons.apps),
             label: 'Categories',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.manage_search),
-            label: 'history',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.manage_search),
+          //   label: 'history',
+          // ),
         ],
       ),
     );
